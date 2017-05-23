@@ -13,7 +13,8 @@
         android:id="@+id/textViewProperNoun"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -43,7 +44,7 @@
         android:ems="10"
         android:id="@+id/locationInput"
         android:hint="e.g., Mars"
-        android:layout_marginTop="35dp"
+        android:layout_marginBottom="57dp"
         android:layout_below="@+id/locationTextView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -56,7 +57,7 @@
         android:layout_below="@+id/locationInput"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="115dp" />
+        />
 
     <EditText
         android:layout_width="wrap_content"
@@ -68,7 +69,7 @@
         android:layout_below="@+id/verbTextView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="29dp" />
+        android:layout_marginBottom="57dp" />
 
     <TextView
         android:text="Enter a noun"
@@ -87,7 +88,7 @@
         android:layout_below="@+id/nounTextView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="27dp" />
+        />
 
 
     <Button

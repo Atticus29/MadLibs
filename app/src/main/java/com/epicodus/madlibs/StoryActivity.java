@@ -1,11 +1,14 @@
 package com.epicodus.madlibs;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -17,12 +20,11 @@ public class StoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_story);
         ButterKnife.bind(this);
-        Bundle extras = getIntent().getExtras();
-        String properNoun = extras.getString("properNoun");
-        String location = extras.getString("location");
-        String verb = extras.getString("verb");
-        String noun = extras.getString("noun");
-        String story = String.format("One day, %s went to %s. They %s all over %s.", properNoun, location, verb, noun);
+        Intent intent = getIntent();
+        ArrayList<String> allFields = intent.getStringArrayListExtra("allFields");
+        Resources res = getResources();
+        String storyString = res.getString(R.string.story_string);
+        String story = String.format(storyString, allFields.toArray());
         Log.d("story", story);
         mTextView.setText(story);
     }

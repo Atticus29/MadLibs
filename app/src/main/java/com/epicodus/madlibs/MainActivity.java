@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,17 +22,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.makeStoryButton) Button mMakeStoryButton;
     @Bind(R.id.baseGridView) GridView gridView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/scififont.TTF");
         Resources res = getResources();
         String [] userPrompts = res.getStringArray(R.array.user_input);
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/scififont.TTF");
 //        gridView.setAdapter(new InputFieldAdapter(this, userPrompts, typeface));
         gridView.setAdapter(new EditFieldAdapter(this, userPrompts));
-
         mMakeStoryButton.setOnClickListener(this);
     }
 
@@ -42,12 +43,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Resources res = getResources();
             String [] userPrompts = res.getStringArray(R.array.user_input);
             Log.d("userPrompts?", Arrays.toString(userPrompts));
-//            for(int i = 0; i<userPrompts.length; i++)
-//            Bundle extras = new Bundle();
-//            extras.putString("noun", noun);
-//            Intent intent = new Intent(MainActivity.this, StoryActivity.class);
-//            intent.putExtras(extras);
-//            startActivity(intent);
+            for(int i = 0; i<userPrompts.length; i++){
+                LinearLayout listLayout = (LinearLayout) gridView.getChildAt(i);
+                EditText editField = (EditText) listLayout.getChildAt(0);
+                allFields.add(editField.getText().toString());
+            }
+            Intent intent = new Intent(MainActivity.this, StoryActivity.class);
+            intent.putStringArrayListExtra("allFields", allFields);
+            startActivity(intent);
         }
     }
 }

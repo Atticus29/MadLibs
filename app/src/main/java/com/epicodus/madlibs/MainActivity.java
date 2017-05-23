@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import butterknife.Bind;
@@ -28,25 +29,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Resources res = getResources();
         String [] userPrompts = res.getStringArray(R.array.user_input);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/scififont.TTF");
-        gridView.setAdapter(new InputFieldAdapter(this, userPrompts, typeface));
+//        gridView.setAdapter(new InputFieldAdapter(this, userPrompts, typeface));
+        gridView.setAdapter(new EditFieldAdapter(this, userPrompts));
+
         mMakeStoryButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v){
         if(v == mMakeStoryButton) {
-//            String properNoun = mPersonNameInput.getText().toString();
-//            String location = mLocationInput.getText().toString();
-//            String verb = mVerbInput.getText().toString();
-//            String noun = mNounInput.getText().toString();
+            ArrayList<String> allFields = new ArrayList<>();
+            Resources res = getResources();
+            String [] userPrompts = res.getStringArray(R.array.user_input);
+            Log.d("userPrompts?", Arrays.toString(userPrompts));
+//            for(int i = 0; i<userPrompts.length; i++)
 //            Bundle extras = new Bundle();
-//            extras.putString("properNoun", properNoun);
-//            extras.putString("location", location);
-//            extras.putString("verb", verb);
 //            extras.putString("noun", noun);
-            Intent intent = new Intent(MainActivity.this, StoryActivity.class);
+//            Intent intent = new Intent(MainActivity.this, StoryActivity.class);
 //            intent.putExtras(extras);
-            startActivity(intent);
+//            startActivity(intent);
         }
     }
 }

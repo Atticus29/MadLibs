@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MadLibs</string>
+    <string name="story_string" formatted="false">One day, %s went to %s. They %s all over %s.</string>
+    <string-array name="user_input">
+        <item>ProperNoun</item>
+        <item>Location</item>
+        <item>Verb in past tense</item>
+        <item>Noun</item>
+    </string-array>
 </resources>
